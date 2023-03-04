@@ -5,7 +5,7 @@ import pickle
 import d4rl
 import d4rl.gym_mujoco
 import d4rl.locomotion
-import dmcgym
+# import dmcgym
 import gym
 import numpy as np
 import tqdm
@@ -35,7 +35,7 @@ flags.DEFINE_string("project_name", "rlpd", "wandb project name.")
 flags.DEFINE_string("env_name", "halfcheetah-expert-v2", "D4rl dataset name.")
 flags.DEFINE_float("offline_ratio", 0.5, "Offline ratio.")
 flags.DEFINE_integer("seed", 42, "Random seed.")
-flags.DEFINE_integer("eval_episodes", 10, "Number of episodes used for evaluation.")
+flags.DEFINE_integer("eval_episodes", 50, "Number of episodes used for evaluation.")
 flags.DEFINE_integer("log_interval", 1000, "Logging interval.")
 flags.DEFINE_integer("eval_interval", 5000, "Eval interval.")
 flags.DEFINE_integer("batch_size", 256, "Mini batch size.")
@@ -83,7 +83,7 @@ def combine(one_dict, other_dict):
 def main(_):
     assert FLAGS.offline_ratio >= 0.0 and FLAGS.offline_ratio <= 1.0
 
-    wandb.init(project=FLAGS.project_name)
+    wandb.init(project=FLAGS.project_name, entity="bridge_data_rl")
     wandb.config.update(FLAGS)
 
     exp_prefix = f"s{FLAGS.seed}_{FLAGS.pretrain_steps}pretrain"

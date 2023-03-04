@@ -10,7 +10,7 @@ import numpy as np
 
 from rlpd.data.dataset import Dataset
 
-AWAC_DATA_DIR = "~/.datasets/awac-data"
+AWAC_DATA_DIR = "./offpolicy_hand_data"
 
 
 def process_expert_dataset(expert_datset):
